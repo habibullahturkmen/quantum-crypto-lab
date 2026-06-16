@@ -25,6 +25,8 @@ export default function App() {
 
   const next = () => setStep((s) => Math.min(s + 1, 5))
   const prev = () => setStep((s) => Math.max(s - 1, 1))
+  const goToStep = (id: number) => setStep(id)
+  const restart = () => setStep(1)
 
   return (
     <div className="app">
@@ -33,14 +35,14 @@ export default function App() {
         <p>Cyber Experts — Quantum Computing vs Modern Cryptography</p>
       </header>
 
-      <StepIndicator steps={STEPS} current={step} />
+      <StepIndicator steps={STEPS} current={step} onStepSelect={goToStep} />
 
       <main className="app-main">
         {step === 1 && <RsaStep shared={shared} setShared={setShared} onNext={next} />}
         {step === 2 && <ClassicalAttackStep shared={shared} onNext={next} onPrev={prev} />}
         {step === 3 && <QuantumAttackStep onNext={next} onPrev={prev} />}
         {step === 4 && <PqcStep shared={shared} onNext={next} onPrev={prev} />}
-        {step === 5 && <TlsImpactStep onPrev={prev} />}
+        {step === 5 && <TlsImpactStep onRestart={restart} />}
       </main>
     </div>
   )

@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react'
 import type { TlsResult } from '../types'
 
 interface Props {
-  onPrev: () => void
+  onRestart: () => void
 }
 
-export default function TlsImpactStep({ onPrev }: Props) {
+export default function TlsImpactStep({ onRestart }: Props) {
   const [data, setData] = useState<TlsResult | null>(null)
   const [error, setError] = useState('')
 
@@ -40,7 +40,7 @@ export default function TlsImpactStep({ onPrev }: Props) {
         </div>
       )}
 
-      <button type="button" className="btn ghost" onClick={onPrev}>← Back</button>
+      <button type="button" className="btn" onClick={onRestart}>Start over from Step 1 →</button>
     </section>
   )
 }
