@@ -32,6 +32,7 @@ export default function App() {
     <div className="app">
       <header className="app-header">
         <h1>Quantum vs Classical Crypto Lab</h1>
+        <br />
         <p>Cyber Experts — Quantum Computing vs Modern Cryptography</p>
       </header>
 
