@@ -1,11 +1,19 @@
 import express from 'express';
 import cors from 'cors';
 import crypto from 'crypto';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { ml_kem768 } from '@noble/post-quantum/ml-kem.js';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const clientDist = path.join(__dirname, '../client/dist');
+const isProd = process.env.NODE_ENV === 'production';
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+app.get('/api/health', (_req, res) => res.json({ ok: true }));
 
 // ── Step 1: RSA Encrypt ──────────────────────────────────────────
 app.post('/api/rsa/encrypt', (req, res) => {
@@ -175,5 +183,14 @@ app.get('/api/tls-impact', (_req, res) => {
     });
 });
 
-const PORT = 3001;
-app.listen(PORT, () => console.log(`API running on http://localhost:${PORT}`));
+if (isProd) {
+    app.use(express.static(clientDist));
+    app.get(/^(?!\/api).*/, (_req, res) => {
+        res.sendFile(path.join(clientDist, 'index.html'));
+    });
+}
+
+const PORT = Number(process.env.PORT) || 3001;
+app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}${isProd ? ' (production)' : ''}`);
+});
