@@ -1,7 +1,7 @@
 .app {
   max-width: 900px;
   margin: 0 auto;
-  padding: 2rem 1.5rem 4rem;
+  padding: 0rem 1.5rem 4rem;
 }
 
 .app-header {
@@ -9,9 +9,34 @@
   margin-bottom: 2rem;
 }
 
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--social-bg);
+  color: var(--text-h);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.85rem;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent-border);
+}
+
+.theme-toggle-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
 .app-header h1 {
   color: var(--text-h);
   margin-bottom: 0.25rem;
+  margin-top: 1rem;
 }
 
 .app-header p {

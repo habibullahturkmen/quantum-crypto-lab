@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import StepIndicator from './components/StepIndicator'
+import ThemeToggle from './components/ThemeToggle'
 import RsaStep from './components/RsaStep'
 import ClassicalAttackStep from './components/ClassicalAttackStep'
 import QuantumAttackStep from './components/QuantumAttackStep'
@@ -29,9 +30,14 @@ export default function App() {
   const restart = () => setStep(1)
 
   return (
-    <div className="app">
+    <div>
+      <div style={{display: 'flex', justifyContent: 'flex-end', marginRight: '1.5rem', marginTop: '1.5rem'}}>
+        <ThemeToggle />
+      </div>
+      <div className="app">
+
       <header className="app-header">
-        <h1>Quantum vs Classical Crypto Lab</h1>
+        <h1>Quantum vs Classical Crypto Demo Lab</h1>
         <br />
         <p>Cyber Experts — Quantum Computing vs Modern Cryptography</p>
       </header>
@@ -45,6 +51,7 @@ export default function App() {
         {step === 4 && <PqcStep shared={shared} onNext={next} onPrev={prev} />}
         {step === 5 && <TlsImpactStep onRestart={restart} />}
       </main>
+    </div>
     </div>
   )
 }
