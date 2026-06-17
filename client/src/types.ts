@@ -49,13 +49,18 @@ export interface PqcResult {
   note: string
 }
 
-export interface TlsItem {
-  org: string
-  event: string
+export interface TlsEntry {
+  label?: string
+  text: string
+}
+
+export interface TlsSection {
+  heading: string
+  entries: TlsEntry[]
 }
 
 export interface TlsResult {
   title: string
-  items: TlsItem[]
+  sections: TlsSection[]
   recommendation: string
 }

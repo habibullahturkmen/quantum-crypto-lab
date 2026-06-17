@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import PlainEnglish from './PlainEnglish'
+import { STEP_PLAIN } from '../content/stepCopy'
 import type { SharedState, ClassicalResult } from '../types'
 
 interface Props {
@@ -57,6 +59,7 @@ export default function ClassicalAttackStep({ shared, onNext, onPrev }: Props) {
   return (
     <section className="demo-step">
       <h2>Step 2 — Classical Attack (GNFS)</h2>
+      <PlainEnglish>{STEP_PLAIN[2]}</PlainEnglish>
       <p className="step-desc">
         The General Number Field Sieve is the best known classical algorithm for factoring
         large RSA moduli. Watch how long it would take to break RSA-{shared.keyBits || 2048}.

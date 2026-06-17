@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import PlainEnglish from './PlainEnglish'
+import { STEP_PLAIN } from '../content/stepCopy'
 import type { SharedState, RsaResult } from '../types'
 
 interface Props {
@@ -40,9 +42,15 @@ export default function RsaStep({ shared, setShared, onNext }: Props) {
   return (
     <section className="demo-step">
       <h2>Step 1 — Encrypt with RSA</h2>
+      <PlainEnglish>{STEP_PLAIN[1]}</PlainEnglish>
       <p className="step-desc">
         RSA-2048 is used today in TLS handshakes, VPN certificates, and PKI.
         Encrypt a message to see classical cryptography in action.
+      </p>
+      <p className="note">
+        ECC (Elliptic Curve Cryptography) is also widely used in TLS and modern devices.
+        This demo uses RSA because factoring is easier to visualize; both RSA and ECC are
+        vulnerable to Shor&apos;s algorithm on a large enough quantum computer.
       </p>
 
       <label className="field-label" htmlFor="message">

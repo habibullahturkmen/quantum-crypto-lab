@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import PlainEnglish from './PlainEnglish'
+import { STEP_PLAIN } from '../content/stepCopy'
 import type { QuantumResult } from '../types'
 
 interface Props {
@@ -51,9 +53,15 @@ export default function QuantumAttackStep({ onNext, onPrev }: Props) {
   return (
     <section className="demo-step">
       <h2>Step 3 — Quantum Attack (Shor&apos;s Algorithm)</h2>
+      <PlainEnglish>{STEP_PLAIN[3]}</PlainEnglish>
       <p className="step-desc">
         Shor&apos;s algorithm factors integers exponentially faster on a quantum computer.
         Demo uses small N (educational only — real RSA-2048 is not breakable yet).
+      </p>
+      <p className="note">
+        Shor&apos;s algorithm also breaks ECC by solving the elliptic-curve discrete logarithm
+        problem. We demonstrate RSA here because integer factorization maps directly to the
+        math behind RSA keys.
       </p>
 
       <label className="field-label" htmlFor="modulus">

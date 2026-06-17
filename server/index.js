@@ -160,23 +160,53 @@ app.post('/api/pqc/encrypt', (req, res) => {
 // ── Step 5: TLS / PKI context ───────────────────────────────────
 app.get('/api/tls-impact', (_req, res) => {
     res.json({
-        title: 'Why This Matters for TLS, PKI & Enterprise Security',
-        items: [
+        title: 'TLS, PKI & Enterprise Impact',
+        sections: [
             {
-                org: 'Google',
-                event: '2024 — First production TLS connection using post-quantum hybrid key exchange (X25519 + ML-KEM-768)',
+                heading: 'Case Studies',
+                entries: [
+                    {
+                        label: 'Google',
+                        text: '2024 — First production TLS connection using post-quantum hybrid key exchange (X25519 + ML-KEM-768)',
+                    },
+                    {
+                        label: 'Cloudflare',
+                        text: 'PQC available for all customers — hybrid TLS 1.3 with Kyber',
+                    },
+                    {
+                        label: 'NSA CNSA 2.0',
+                        text: 'Mandates PQC migration: NSS by 2025, full transition timelines through 2033',
+                    },
+                ],
             },
             {
-                org: 'Cloudflare',
-                event: 'PQC available for all customers — hybrid TLS 1.3 with Kyber',
+                heading: 'Enterprise Migration Challenges',
+                entries: [
+                    { text: 'Discovering every system that uses RSA, ECC, or legacy TLS across the organization' },
+                    { text: 'Replacing certificates, VPNs, and hardware that cannot support PQC' },
+                    { text: 'Testing hybrid deployments without breaking existing clients and partners' },
+                    { text: 'Coordinating timelines across vendors, cloud providers, and compliance teams' },
+                ],
             },
             {
-                org: 'NSA CNSA 2.0',
-                event: 'Mandates PQC migration: NSS by 2025, full transition timelines through 2033',
+                heading: 'Security Challenges & Limitations',
+                entries: [
+                    {
+                        label: 'Harvest Now, Decrypt Later',
+                        text: 'Adversaries store encrypted traffic today to decrypt once quantum computers mature',
+                    },
+                    { text: 'No large-scale quantum computer can break RSA-2048 yet — but migration takes years' },
+                    { text: 'PQC algorithms are newer; implementation bugs and performance overhead are real risks' },
+                ],
             },
             {
-                org: 'Harvest Now, Decrypt Later',
-                event: 'Adversaries store encrypted traffic today to decrypt once quantum computers mature',
+                heading: 'Defensive Strategies & Best Practices',
+                entries: [
+                    { text: 'Inventory cryptographic assets (certificates, keys, protocols, vendors)' },
+                    { text: 'Adopt hybrid TLS (classical + PQC) where supported, as Google and Cloudflare have done' },
+                    { text: 'Follow NIST FIPS 203 (ML-KEM) and NSA CNSA 2.0 migration guidance' },
+                    { text: 'Prioritize long-lived secrets: VPNs, PKI roots, archived data, and government records' },
+                ],
             },
         ],
         recommendation: 'Organizations should inventory cryptographic assets and begin PQC migration planning now.',

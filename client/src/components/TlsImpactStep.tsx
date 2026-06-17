@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import PlainEnglish from './PlainEnglish'
+import { STEP_PLAIN } from '../content/stepCopy'
 import type { TlsResult } from '../types'
 
 interface Props {
@@ -19,8 +21,10 @@ export default function TlsImpactStep({ onRestart }: Props) {
   return (
     <section className="demo-step">
       <h2>Step 5 — TLS, PKI &amp; Enterprise Impact</h2>
+      <PlainEnglish>{STEP_PLAIN[5]}</PlainEnglish>
       <p className="step-desc">
-        This is why Google, Cloudflare, and NSA CNSA 2.0 are pushing post-quantum migration now.
+        Real-world case studies, migration challenges, risks, and defensive strategies —
+        aligned with our presentation on VPNs, PKI, and TLS.
       </p>
 
       {error && <p className="error">{error}</p>}
@@ -28,14 +32,27 @@ export default function TlsImpactStep({ onRestart }: Props) {
       {data && (
         <div className="result-card">
           <h3>{data.title}</h3>
-          <ul className="tls-list">
-            {data.items.map((item) => (
-              <li key={item.org}>
-                <strong>{item.org}</strong>
-                <span>{item.event}</span>
-              </li>
-            ))}
-          </ul>
+
+          {data.sections.map((section) => (
+            <div key={section.heading} className="tls-section">
+              <h4 className="tls-section-heading">{section.heading}</h4>
+              <ul className="tls-list">
+                {section.entries.map((entry) => (
+                  <li key={entry.label ?? entry.text}>
+                    {entry.label ? (
+                      <>
+                        <strong>{entry.label}</strong>
+                        <span>{entry.text}</span>
+                      </>
+                    ) : (
+                      <span>{entry.text}</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
           <p className="recommendation">{data.recommendation}</p>
         </div>
       )}

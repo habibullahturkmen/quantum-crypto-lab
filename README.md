@@ -18,6 +18,8 @@ That does **not** mean the internet is broken today. Useful quantum computers la
 
 This lab lets you try each piece of that story hands-on.
 
+**Presenting?** See [DEMO_SCRIPT.md](./DEMO_SCRIPT.md) for a ~5-minute live demo script aligned with the Cyber Experts slides.
+
 ---
 
 ## What each step does
@@ -76,9 +78,9 @@ The step animates the high-level stages: quantum register setup, modular exponen
 
 ### Step 5 — TLS, PKI & Enterprise Impact
 
-**What you do:** Read a summary of how this affects the real world.
+**What you do:** Read structured sections on case studies, migration, risks, and defenses.
 
-**What is happening:** This step loads a timeline of events — Google testing hybrid post-quantum TLS, Cloudflare offering PQC to customers, NSA migration guidance (CNSA 2.0), and the **harvest now, decrypt later** threat (attackers storing encrypted traffic today to decrypt later when quantum computers mature).
+**What is happening:** This step loads four subsections aligned with the presentation slides: **Case Studies** (Google, Cloudflare, NSA CNSA 2.0), **Enterprise Migration Challenges**, **Security Challenges & Limitations**, and **Defensive Strategies & Best Practices**.
 
 **Why it matters:** Encryption protects data in transit *now*, but secrets intercepted today could be decrypted in the future. Migration planning has already started.
 

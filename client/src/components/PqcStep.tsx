@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import PlainEnglish from './PlainEnglish'
+import { STEP_PLAIN } from '../content/stepCopy'
 import type { SharedState, PqcResult } from '../types'
 
 interface Props {
@@ -34,6 +36,7 @@ export default function PqcStep({ shared, onNext, onPrev }: Props) {
   return (
     <section className="demo-step">
       <h2>Step 4 — Post-Quantum Cryptography (Kyber)</h2>
+      <PlainEnglish>{STEP_PLAIN[4]}</PlainEnglish>
       <p className="step-desc">
         ML-KEM-768 (CRYSTALS-Kyber) is NIST-standardized and designed to resist
         both classical and quantum attacks. Encrypt the same message with PQC.
